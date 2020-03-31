@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('includes/head', {titulo:'Pedido de Pizza'}) %>
+    <body>
+        <%- include('includes/header') %>
+
+        <main class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Pedido de Pizza</h1>
+                </div>
+                <div class="col-12">
+                    <form class="w-50" action="/pedidos/criar" method="POST">
+                        <div class="form-group">
+                            <label for="nomePizza">Nome da Pizza</label>
+                            <select id="nomePizza" name="nomePizza">
+                                <% for(i=0;i<cardapio.length;i++) {%>
+                                    <option><%= cardapio[i].nome %></option>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="usuario">Usuário</label>
+                            <input class="form-control" name="usuario" id="usuario" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="endereco">Endereço</label>
+                            <input class="form-control" name="endereco" id="endereco" type="text">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success">Fazer Pedido</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    
+    </body>
+</html>
