@@ -9,12 +9,17 @@
         <% if(cardapio != undefined && cardapio.length > 0) {%>  
 
             
-       <% cardapio.forEach(pizza =>{ %>
+       <% cardapio.forEach((pizza, index) =>{ %>
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
                     <h5 class="card-title"><%= pizza.nome %></h5>
                     <p class="card-text">R$ <%= pizza.preco %></p>
+                    </div>
+                    <div class="card-footer">
+                        <form method="POST" action="/cardapio/deletar/<%= index %>?_method=DELETE">
+                            <button class="btn btn-danger" type="submit" name=<%= pizza.nome %>>Excluir</button>
+                        </form>
                     </div>
                 </div>
             </div>

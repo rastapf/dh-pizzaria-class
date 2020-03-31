@@ -11,6 +11,16 @@ let cardapioController = {
     criarPizza: (req, res) => {
         Cardapio.cadastrarPizza(req.body.nomePizza,req.body.precoPizza);
         res.redirect('/cardapio/ver');
+    },
+    /*apagarPizza: (req, res) => {
+        Cardapio.deletarPizza(req.body.nomePizza);
+        res.redirect('/cardapio/ver');
+    }*/
+    removerPizza: (req, res) => {
+        let {posicao} = req.params;
+
+        Cardapio.removerPizza(posicao);
+        res.redirect('/cardapio/ver');
     }
 
 }

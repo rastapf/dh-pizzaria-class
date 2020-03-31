@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const methodOverride = require('method-override');
 
 let rotasUsuario = require('./routes/usuarioRoute')
 let rotasCardapio = require('./routes/cardapioRoute')
@@ -10,6 +11,7 @@ app.use(express.static(__dirname + 'public'));
 //app.use(express.static(path.join('/public')));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+app.use(methodOverride('_method'));
 
 app.get('/:nome', (req, res)=>
     {

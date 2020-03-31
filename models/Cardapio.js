@@ -22,5 +22,22 @@ function cadastrarPizza(nome, preco) {
     return fs.writeFileSync(db, JSON.stringify(listaCardapio));
 }
 
+function deletarPizza(nome) {
+    let listaCardapio = JSON.parse(fs.readFileSync(db, {encoding:'utf-8'}));
 
-module.exports = {listarCardapio, cadastrarPizza}
+    listaCardapio.filter(pizza => {
+        return (pizza.nome != nome)
+    });
+
+    return fs.writeFileSync(db, JSON.stringify(listaCardapio));
+}
+
+function removerPizza(posicao) {
+    let listaCardapio = JSON.parse(fs.readFileSync(db, {encoding:'utf-8'}));
+
+    listaCardapio.splice(posicao, 1);
+
+    return fs.writeFileSync(db, JSON.stringify(listaCardapio));
+}
+
+module.exports = {listarCardapio, cadastrarPizza, deletarPizza, removerPizza}
