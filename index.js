@@ -1,5 +1,7 @@
 const express = require('express');
 const methodOverride = require('method-override');
+const path = require('path');
+const session = require('express-session');
 
 let rotasUsuario = require('./routes/usuarioRoute')
 let rotasCardapio = require('./routes/cardapioRoute')
@@ -7,9 +9,14 @@ let rotasPedido = require('./routes/pedidoRoute')
 
 let app = express()
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname + 'public'));
+app.use(express.static(path.join('public')));
 //app.use(express.static(path.join('/public')));
 app.use(express.urlencoded({extended:true}));
+app.use(session({
+    secret:'Pizzaria',
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(express.json());
 app.use(methodOverride('_method'));
 

@@ -4,6 +4,10 @@
 <body>
     <%- include('includes/header') %>
     <div class="container">
+        <% if(typeof(logado)!='undefined') { %>
+            <h1>Olá <%= logado %></h1>
+        <%}%>
+
         <section class="row p-5">
 
         <% if(cardapio != undefined && cardapio.length > 0) {%>  
@@ -13,6 +17,11 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
+                    <% if(pizza.img !== undefined) {%>
+                        <img src="/cardapioIMG/<%= pizza.img %>" class="card-img-top" alt="">
+                    <% } else {%>
+                        <img src="/cardapioIMG/1585686329098_mussarela.jpg" class="card-img-top" alt="">
+                    <% } %>
                     <h5 class="card-title"><%= pizza.nome %></h5>
                     <p class="card-text">R$ <%= pizza.preco %></p>
                     </div>

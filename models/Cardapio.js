@@ -14,10 +14,10 @@ function listarCardapio(){
     return cardapio
 }
 
-function cadastrarPizza(nome, preco) {
+function cadastrarPizza(nome, preco, img) {
     let listaCardapio = JSON.parse(fs.readFileSync(db, {encoding:'utf-8'}));
     
-    listaCardapio.push({nome,preco});
+    listaCardapio.push({nome,preco, img});
 
     return fs.writeFileSync(db, JSON.stringify(listaCardapio));
 }

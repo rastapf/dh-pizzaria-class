@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('includes/head', {titulo:tituloDaPagina})%>
+<body>
+    <%- include('includes/header') %>
+    <div class="container">
+        <section class="row p-5">
+
+        <% if(usuarios != undefined && usuarios.length > 0) {%>  
+
+            
+       <% usuarios.forEach((usuario, index) =>{ %>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title"><%= usuario.nome %></h5>
+                    <p class="card-text">R$ <%= usuario.email %></p>
+                    </div>
+                    <div class="card-footer">   
+                        <form method="POST" action="/usuarios/deletar/<%= index %>?_method=DELETE">
+                            <button class="btn btn-danger" type="submit" name=<%= usuario.nome %>>Excluir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+       <% }) %>
+        
+        <% } else { %>
+            <h1>Não tem usuários cadastrados no sistema!</h1>
+        <% } %>
+
+        <div class="col-12 mt-5">
+            <a href="/usuarios/cadastro" class="btn btn-primary">Cadastrar novo usuário</a>
+        </div>
+          
+        </section>
+    </div>
+</body>
+</html>
